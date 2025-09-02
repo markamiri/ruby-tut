@@ -1,0 +1,169 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+:root{
+  --bg:#0f0f10; --bg-2:#131315; --text:#eaeaea; --muted:#a7a7a7;
+  --accent:#2f6af2; --focus:#3a8cff55; --border:#242428;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0; }
+a{text-decoration:none;color:inherit}
+
+.topbar{
+  height:44px; display:flex; align-items:center; justify-content:flex-end;
+  padding:0 18px; background:var(--bg); border-bottom:1px solid var(--border);
+  color:var(--text); font:14px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+.topbar-link{opacity:.9; display:inline-flex; align-items:center; gap:.4rem;}
+.topbar-link:hover{opacity:1}
+.arrow{display:inline-block; transform:translateY(1px)}
+
+.header{background:var(--bg); color:var(--text)}
+.header-inner{
+  max-width:1280px;
+  margin:0 auto;
+  padding:18px 20px 10px;
+
+  display:flex;                 /* use flexbox */
+  justify-content:space-between;/* push logo left, search right */
+  align-items:center;
+}
+
+.logo{height:54px; display:block; margin:0 auto}
+
+.rightbar{display:flex; justify-content:flex-end; align-items:center; gap:14px}
+.search{position:relative; width:min(560px,58vw)}
+.search input{
+  width:100%; height:44px; border-radius:28px; border:1px solid var(--border);
+  background:#0d0d0f; color:var(--text); padding:0 44px 0 54px; font-size:15px; outline:none;
+}
+.search input::placeholder{color:var(--muted)}
+.search .icon{position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px; opacity:.75}
+.bag{
+  width:38px; height:38px; border-radius:50%; border:1px solid var(--border);
+  display:inline-flex; align-items:center; justify-content:center; background:#0d0d0f;
+}
+.bag svg{width:18px; height:18px; opacity:.92}
+
+.nav-row{border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg-2)}
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between; /* 🔥 evenly spread out */
+  flex-wrap: nowrap;              /* keep one line */
+  color: var(--text);
+}
+
+.nav-link{
+  display:inline-flex; align-items:center; gap:8px;
+  font:600 14px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  letter-spacing:.2px; white-space:nowrap;
+}
+.nav-link .fire{opacity:.85}
+.nav-link .chev{width:14px; height:14px; opacity:.7}
+.nav-link:hover{opacity:.95}
+.new-pill{
+  margin-left:2px; font:700 11px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:#fff; background:var(--accent); padding:6px 10px; border-radius:999px;
+  display:inline-flex; align-items:center; gap:6px; box-shadow:0 0 0 1px #2b59d6 inset;
+}
+
+/* Responsive */
+@media (max-width:960px){
+  .header-inner{grid-template-columns:1fr auto; grid-template-areas:"logo right"}
+  .logo{height:48px}
+  .search{width:min(480px,70vw)}
+}
+@media (max-width:720px){
+  .nav-inner{overflow:auto hidden; white-space:nowrap; gap:18px}
+  .topbar{justify-content:center}
+  .search{width:100%}
+  .rightbar{gap:8px}
+}
+
+.logo-placeholder {
+  width: 260px;
+  height: 54px;
+  background: #555; /* grey box */
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+/* Shared left/right bounds so header & nav line up perfectly */
+.shell{
+  max-width:1280px;      /* adjust to your design */
+  margin:0 auto;
+  padding:0 20px;        /* same side padding for both rows */
+}
+
+/* Header row: logo left, search+bag right */
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between; /* logo left, rightbar to the far right */
+  padding:18px 0 12px;           /* vertical padding only (sides come from .shell) */
+}
+
+/* Make the search grow to fill available space up to the right edge */
+.rightbar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:40%;                 /* optional – prevents it from shrinking too small */
+  flex:1;                        /* take remaining space */
+  justify-content:flex-end;      /* keep contents tight to the right */
+}
+
+/* Let the input expand within rightbar, not past the container edge */
+.search {
+  position: relative;
+  flex: 0 0 auto;       /* don’t let it stretch */
+  width: 50%;           /* half of the header width */
+  max-width: 400px;     /* cap the maximum width */
+}
+
+.search input {
+  width: 100%;
+  height: 44px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: #0d0d0f;
+  color: var(--text);
+  padding: 0 44px 0 54px;
+  font-size: 15px;
+  outline: none;
+}
+.search .icon{
+  position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  width:20px; height:20px; opacity:.75;
+}
+
+/* Logo box (left edge will now align with first nav link) */
+.logo-placeholder{
+  width:260px; height:54px; background:#555; border-radius:4px;
+}
+
+/* Nav row keeps its own spacing but shares the same shell edges */
+.nav-row{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg-2) }
+.nav-inner{
+  display:flex; align-items:center; gap:48px; /* tune spacing between nav items */
+  padding:10px 0;                              /* vertical only; sides via .shell */
+  justify-content:space-between;               /* spread items across the row */
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}

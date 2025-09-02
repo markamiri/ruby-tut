@@ -1,0 +1,57 @@
+<header class="header">
+  <div class="shell header-inner"><!-- shared container -->
+    <!-- Left: logo -->
+    <div class="logo-placeholder"></div>
+
+    <!-- Right: search + bag -->
+    <div class="rightbar">
+      <label class="search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"></line>
+        </svg>
+        <input type="search" placeholder="Search" aria-label="Search products">
+      </label>
+
+      <%= link_to "#", class: "bag", aria: { label: "Cart" } do %>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 7h12l-1 13H7L6 7Z"></path>
+          <path d="M9 7a3 3 0 1 1 6 0"></path>
+        </svg>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-row" aria-label="Primary">
+  <div class="shell nav-inner"><!-- shared container -->
+    <%= link_to "#", class: "nav-link" do %>
+      Categories
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    <% end %>
+
+    <%= link_to "#", class: "nav-link" do %>
+      NEW LISTINGS <span class="new-pill">NEW</span>
+    <% end %>
+
+   
+    <%= link_to "#", class: "nav-link" do %>Services<% end %>
+    <%= link_to "#", class: "nav-link" do %>
+      About Us
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to "Log Out",
+            destroy_user_session_path,
+            data: { turbo_method: :delete },
+            class: "nav-link" %>
+    <% else %> 
+      <%= link_to "Admin", admin_path, class: "nav-link" %>
+    <% end %>
+
+  </div>
+</nav>

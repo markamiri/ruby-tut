@@ -1,0 +1,19 @@
+<h1>Categories</h1>
+
+<div class="pane">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Order (Top 3 featured on homepage)</th>
+        <th class="w-96"></th> <!-- Actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @categories %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New category", new_category_path, class: "sb-btn sb-btn--success mt-3" %>

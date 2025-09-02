@@ -1,0 +1,150 @@
+<aside class="sb">
+  <!-- GENERAL -->
+  <div class="sb__section">
+    <div class="sb__label">GENERAL</div>
+
+    <%= link_to admin_path, class: "sb__item #{'is-active' if current_page?(admin_path)}" do %>
+    <span class="sb__icon">
+        <!-- dashboard icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+        <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+        </svg>
+    </span>
+    <span class="sb__text">Dashboard</span>
+    <% end %>
+
+
+    <%= link_to categories_path, class: "sb__item #{'active' if current_page?(categories_path)}" do %>
+        <span class="sb__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="5" width="20" height="14" rx="3"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+        </span>
+        <span class="sb__text">Categories</span>
+    <% end %>
+
+
+    <%= link_to products_path , class: "sb__item #{'active' if current_page?(products_path)}" do %>
+      <span class="sb__icon">
+        <!-- customers icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Product</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <!-- message icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a4 4 0 0 1-4 4H8l-5 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Invoice</span>
+      <span class="sb__badge">8</span>
+    <% end %>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="sb__section">
+    <div class="sb__label">TOOLS</div>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+          <path d="M9 4v16M4 9h16"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Product</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3h8v4H8zM4 7h16v14H4z"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Invoice</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3v18h18"></path>
+          <path d="M7 13l3 3 7-7"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Analytics</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3v18M3 12h18"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Automation</span>
+      <span class="sb__pill">BETA</span>
+    <% end %>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="sb__section">
+    <div class="sb__label">SUPPORT</div>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 9l2 2 4-4"></path><path d="M21 12a9 9 0 1 1-9-9"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Settings</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1 3-5z"></path>
+        </svg>
+      </span>
+      <span class="sb__text">Security</span>
+    <% end %>
+
+    <%= link_to "#", class: "sb__item" do %>
+      <span class="sb__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <circle cx="12" cy="16" r="1"></circle>
+        </svg>
+      </span>
+      <span class="sb__text">Help</span>
+    <% end %>
+  </div>
+
+  <!-- TEAM CARD -->
+  <div class="sb__team">
+    <div class="sb__team-row">
+      <div class="sb__team-avatar">◆</div>
+      <div class="sb__team-info">
+        <div class="sb__team-label">Team</div>
+        <div class="sb__team-name">Marketing</div>
+      </div>
+      <div class="sb__chev">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+    <%= link_to "Upgrade Plan", "#", class: "sb__upgrade" %>
+  </div>
+
+  <div class="sb__footer">© 2023 Nexus.io, Inc.</div>
+</aside>

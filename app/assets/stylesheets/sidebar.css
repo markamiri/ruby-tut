@@ -1,0 +1,192 @@
+:root{
+  --sb-bg:#fff;
+  --sb-line:#e6e8eb;
+  --sb-text:#121417;
+  --sb-muted:#8a9099;
+  --sb-primary:#2563eb;
+  --sb-badge:#eef2ff;
+  --sb-beta:#ede9fe;
+}
+
+
+
+.sb__section{
+  padding: 8px;
+  border: 1px solid var(--sb-line);
+  border-radius: 12px;
+  background: #fff;
+}
+.sb__label{
+  font: 700 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color: var(--sb-muted);
+  letter-spacing: .8px;
+  margin: 8px 8px 6px;
+}
+
+.sb__item{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sb-text);
+  padding: 10px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 2px 4px;
+}
+.sb__item:hover{ background:#f7f8fa; }
+.sb__item.is-active{
+  background:#f1f5ff;
+  box-shadow: inset 0 0 0 1px #d8e3ff;
+}
+
+.sb__icon svg{ width:20px;height:20px; }
+.sb__text{ font:600 15px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+
+.sb__badge{
+  margin-left:auto;
+  font:700 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:#f1f5ff;
+  color:#1d4ed8;
+  padding:6px 8px;border-radius:10px;
+}
+.sb__pill{
+  margin-left:auto;
+  font:700 11px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--sb-beta);
+  color:#6d28d9;
+  padding:6px 10px;border-radius:999px;
+  box-shadow: inset 0 0 0 1px #e4d9ff;
+}
+
+.sb__team{
+  margin-top:auto;
+  border:1px solid var(--sb-line);
+  border-radius:12px;
+  padding:12px;
+  background:#fff;
+}
+.sb__team-row{
+  display:flex; align-items:center; gap:12px;
+  padding:8px; border-radius:10px; background:#f8fafc;
+}
+.sb__team-avatar{
+  width:36px;height:36px;border-radius:8px;
+  background:#e6fbff;color:#12b8cf;
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+}
+.sb__team-info{ flex:1; }
+.sb__team-label{ font:600 12px/1 system-ui; color:var(--sb-muted); }
+.sb__team-name{ font:700 14px/1.2 system-ui; color:var(--sb-text); }
+.sb__chev{ opacity:.65 }
+
+.sb__upgrade{
+  display:block; text-align:center; margin:12px 4px 0;
+  padding:10px 12px; border-radius:10px; text-decoration:none;
+  background:#f8fafc; color:var(--sb-text);
+  border:1px solid var(--sb-line); font-weight:600;
+}
+.sb__upgrade:hover{ background:#eef2f7; }
+
+.sb__footer{
+  text-align:center; color:var(--sb-muted);
+  font:600 12px/1.2 system-ui; margin-top:8px;
+}
+
+.sb {
+  width: 280px;
+  min-height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e6e8eb;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+}
+
+/* --------- Card container (matches sidebar card) --------- */
+.pane{
+  background:#fff;
+  border:1px solid var(--sb-line);
+  border-radius:12px;
+  box-shadow: 0 1px 0 rgba(16,24,40,.02);
+  padding: 0;                 /* table handles its own padding */
+  overflow:hidden;            /* round the table corners */
+}
+
+/* --------- Table (theme-aligned) --------- */
+.sb-table{
+  width:100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--sb-text);
+  font: 500 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* Header */
+.sb-table thead th{
+  text-align:left;
+  color:#111827;
+  background:#f7f8fa;               /* soft like sidebar panels */
+  font-weight:700;
+  letter-spacing:.2px;
+  padding:14px 16px;
+  border-bottom:1px solid var(--sb-line);
+}
+.sb-table thead th:first-child{ border-top-left-radius:12px; }
+.sb-table thead th:last-child{  border-top-right-radius:12px;  }
+
+/* Body rows */
+.sb-table tbody td{
+  padding:14px 16px;
+  border-bottom:1px solid var(--sb-line);
+}
+.sb-table tbody tr:hover{
+  background:#f9fbff;               /* subtle hover to match theme */
+}
+
+/* Last row drop shadow cleanup */
+.sb-table tbody tr:last-child td{ border-bottom:none; }
+
+/* Optional: fixed width helper for action column */
+.w-96{ width: 6rem; }
+
+/* --------- Buttons to match theme --------- */
+.sb-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--sb-line);
+  background:#f8fafc;
+  color:var(--sb-text);
+  font-weight:600;
+  text-decoration:none;
+}
+.sb-btn:hover{ background:#eef2f7; }
+
+.sb-btn--success{
+  border-color:#b0e5c6;
+  background:#eefcf3;
+  color:#0f5132;
+}
+.sb-btn--success:hover{
+  background:#e4faed;
+}
+
+/* If your page uses a constrained content column next to the sidebar */
+.content h1{
+  font: 800 34px/1.1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:#111827;
+  margin: 8px 0 18px;
+}
+
+.sb__item.active {
+  background: #eef2f7;       /* light highlight */
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--accent);      /* use your accent color */
+}

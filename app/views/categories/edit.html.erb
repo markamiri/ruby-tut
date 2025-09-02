@@ -1,0 +1,30 @@
+<% content_for :title, "Editing category" %>
+
+<h1>Editing category</h1>
+
+<%= render "form", category: @category %>
+
+<br>
+
+<div>
+  <%= link_to "Show this category", @category, class:"btn btn-outline-primary" %> |
+  <%= link_to "Back to categories", categories_path, class:"btn btn-outline-info"%>
+</div>
+
+<br>
+
+<h2>All categories (Top 4 Category orders are shown on the frontpage)</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Order</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @categories %> 
+    <!-- shorthand for: render partial: "category", collection: @categories, as: :category -->
+  </tbody>
+</table>
