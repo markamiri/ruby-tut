@@ -102,10 +102,18 @@
   top: 0;
 }
 
+/* Default (all other pages) */
 .content {
   flex: 1;
   padding: 24px;
+  background-color: rgb(95,150,170);
 }
+
+/* Only on admin-related pages */
+body.admin-scope .content {
+  background-color: white;
+}
+
 
 /* --------- Card container (matches sidebar card) --------- */
 .pane{
@@ -189,4 +197,22 @@
   border-radius: 10px;
   font-weight: 600;
   color: var(--accent);      /* use your accent color */
+}
+
+.sb-btn--danger {
+  border-color: #f5c2c7;
+  background: #f8d7da;
+  color: #842029;
+}
+
+.sb-btn--upload {
+  border-color: #0d47a1;     /* darker blue border */
+  background: #e7f0fd;       /* lighter Facebook-style background */
+  color: #0d47a1;            /* dark blue text */
+}
+
+.sb-btn--upload:hover {
+  background: #d0e2fb;       /* slightly darker on hover */
+  border-color: #0b3d91;
+  color: #0b3d91;
 }

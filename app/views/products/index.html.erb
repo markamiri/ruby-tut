@@ -1,16 +1,57 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Products" %>
-
 <h1>Products</h1>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
+
+
+
+<div class="tabs-wrap">
+  <button type="button" class="tabs-arrow left" id="tab-left" aria-label="Scroll left">‹</button>
+
+  <div class="tabs-scroll">
+    <div class="tabs-row" id="category-tabs">
+      <% @categories.each do |c| %>
+        <%= link_to products_path(category_id: c.id),
+          class: "sb-btn #{c == @active_category ? 'sb-btn--info' : 'sb-btn--ghost'} tab-pill" do %>
+          <span class="tab-label"><%= c.name %></span>
+          <span class="tab-count"><%= c.products_count %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <button type="sb-button" class="tabs-arrow right" id="tab-right" aria-label="Scroll right">›</button>
 </div>
 
-<%= link_to "New product", new_product_path %>
+<div class="pane mt-3">
+<table class="sb-table ">
+  <thead>
+    <tr>
+      <th>Name</th><th>Slug</th><th>Price</th><th>Uploaded at</th><th>Qty</th><th>Condition</th><th>Category</th><th class="w-96"></th>
+    </tr>
+    
+
+  </thead>
+  <tbody>
+  
+    <% @products.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.slug %></td>
+        <td><%= number_to_currency(p.price) %></td>
+        <td><%= p.uploaded_at&.utc %></td>
+        <td><%= p.quantity %></td>
+        <td><%= p.condition %></td>
+        <td><%= p.category.name %></td>
+        <td class="text-right"><%= link_to "Edit", edit_product_path(p), class: "sb-btn sb-btn--info" %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+  
+
+
+
+
+</table>
+</div>
+
+<%= link_to "New Product", new_product_path, class: "sb-btn sb-btn--success mt-3" %>

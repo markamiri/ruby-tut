@@ -1,0 +1,125 @@
+/* Container */
+.category-container {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Category Title */
+.category-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Row with left/right */
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Product count */
+.product-count {
+  color: black;
+}
+
+.product-count .count {
+  font-weight: bold;
+}
+
+/* Sort dropdown */
+.sort-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+    grid-auto-rows: auto;   /* prevent fixed tall rows */
+  align-items: start;     /* align cards to the top instead of stretching */
+  background-color: rgb(241,229,215);
+}
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Product Card */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+    height: auto; /* don’t force full height */
+    
+
+}
+
+.product-card:hover {
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Placeholder Image (shorter height) */
+.placeholder-image {
+  background: #e5e5e5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  aspect-ratio: auto;  /* disable square forcing */
+    max-height: 310px;   /* control max square height */
+      aspect-ratio: 1 / 1;
+
+
+
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.product-card img {
+  width: 100%;
+  height: 330px;       /* adjust height to what looks good */
+  object-fit: cover;   /* keeps aspect ratio and crops instead of stretching */
+  display: block;
+}
+
+
+/* Product Details */
+.product-details {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #111;
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  color: #444;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+

@@ -11,6 +11,53 @@
     </div>
   <% end %>
 
+<% if @product.images.attached? %>
+  <div class="photo-gallery" data-product-id="<%= @product.id %>">
+    <% @product.ordered_images.each do |image| %>
+      <div class="photo-item" data-id="<%= image.id %>">
+        <%= image_tag image, class: "image" %>
+
+        <%= link_to "✖", remove_image_product_path(@product, image_id: image.id),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "delete-btn" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+       
+
+<div class="field upload-box">
+  <!-- Instruction text -->
+<p id="upload-instructions">Upload Photos</p>
+
+<!-- Hidden file input -->
+<%= form.file_field :images,
+      multiple: true,
+      direct_upload: true,
+      id: "product_images_input",
+      style: "display:none;" %>
+
+<!-- Custom button to trigger file input -->
+<button type="button"
+        onclick="document.getElementById('product_images_input').click()"
+        class= "sb-btn sb-btn--upload mt-3">
+  Choose Images
+</button>
+
+<!-- Preview container -->
+<div id="image-preview-container" class="preview-container"></div>
+
+</div>
+
+
+
+
+
+
   <div class="form-group">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name , class:"form-control" %>
@@ -37,6 +84,8 @@
     <%= form.text_field :condition  , class:"form-control"%>
   </div>
 
+
+  
   <div class="form-group">
   <%= form.label :category_id, "Category", style: "display: block" %>
   <%= form.collection_select :category_id,
@@ -44,10 +93,24 @@
         :id, :name,
         { prompt: "Select a category" },
         { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+  <%= form.label :status, "Status", style: "display: block" %>
+  <%= form.select :status,
+        Product.statuses.keys.map { |s| [s.humanize, s] },
+        { prompt: "Select a status" },
+        { class: "form-control" } %>
 </div>
 
 
+
+
+
+
   <div>
-    <%= form.submit %>
+    <%= form.submit "Update Product", class: "sb-btn sb-btn--success mt-3" %>
+      <%= button_to "Destroy this product", @product, method: :delete , class: "sb-btn mt-3 sb-btn--danger" %>
+
   </div>
 <% end %>

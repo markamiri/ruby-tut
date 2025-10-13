@@ -1,19 +1,66 @@
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= @category.name %></h5>
-    <p class="card-text">
-      Slug: <%= @category.slug %><br>
-      Order: <%= @category.order %>
-    </p>
-    <%= link_to "View all products", category_path(@category), class: "btn btn-primary" %>
-  
-</div>
-<br/>
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category), class:"btn btn-outline-success" %> |
-  <%= link_to "Back to categories", categories_path, class:"btn btn-outline-info"  %>
+<div style ="display: flex; gap:20px">
+    <div style= "flex: 1 ;">
+      <div class="card">
+      <% if @category.image.attached? %>
+        <%= image_tag @category.image.variant(resize_to_limit: [400, 400]) %>
+      <% else %>
+        <p>No image uploaded.</p>
+      <% end %>
 
-  <%= button_to "Destroy this category", @category, method: :delete , class:"btn btn-outline-danger"%>
+      <div class="card-body">
+        <h5 class="card-title"><%= @category.name %></h5>
+        <p class="card-text">
+          Slug: <%= @category.slug %><br>
+          Order: <%= @category.order %>
+        </p>
+      
+      </div>
+
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+  <!-- Row 1: Edit + Destroy -->
+  <div style="display: flex; gap: 10px; margin-top:20px">
+    <%= link_to "Edit category", edit_category_path(@category), class: "sb-btn sb-btn--success" %>
+    <%= button_to "Destroy category", @category,
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "sb-btn sb-btn--danger" %>
+  </div>
+
+  <!-- Row 2: Back -->
+  <div style="margin-top:20px">
+    <%= link_to "Back to categories", categories_path, class: "sb-btn sb-btn--info" %>
+  </div>
 </div>
 
+    </div>
+
+    <div style= "flex: 3; ">
+        <div class="pane">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Price</th>
+        <th>Uploaded at</th>
+        <th>Quantity</th>
+        <th>Condition</th>
+        <th>Category</th>
+        <th class="w-96"></th> <!-- Actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <% if @products.any? %>
+        <%= render @products %>  <!-- uses _product.html.erb -->
+      <% else %>
+        <tr>
+          <td colspan="8">No products in this category yet.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+    </div>
+
+</div>

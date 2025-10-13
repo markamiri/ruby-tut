@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   before_action :set_category, only: %i[ show edit update destroy ]
 
+
   # GET /categories or /categories.json
   def index
     @categories = Category.order(order: :asc)
@@ -11,6 +12,9 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    @category = Category.find(params[:id])
+    @products = @category.products.order(:name) # or whatever order you like
+    
   end
 
   # GET /categories/new
@@ -66,11 +70,11 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params.expect(:id))
+      @category = Category.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.expect(category: [ :name, :slug, :order ])
+      params.require(:category).permit(:name, :slug, :order, :image)
     end
 end

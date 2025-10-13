@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Friends
   class Application < Rails::Application
+
+
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
@@ -23,5 +26,7 @@ module Friends
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    
   end
 end

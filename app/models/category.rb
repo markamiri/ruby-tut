@@ -2,6 +2,14 @@ class Category < ApplicationRecord
     # Always read categories in ascending display order
     #prevents you from needing to write this code over and over again 
 
+    has_many :products, dependent: :nullify
+    
+    has_one_attached :image
+
+    def category_params
+      params.require(:category).permit(:name, :image)
+    end
+
     default_scope { order(order: :asc)}
     
     before_validation :normalize_name
@@ -27,6 +35,11 @@ class Category < ApplicationRecord
         self.name = name.to_s.strip
     end
 
+
+    def set_slug
+      self.slug = name.parameterize if slug.blank?
+    end
+    
    def shift_on_insert
     q = Category.connection.quote_column_name('order') # => "\"order\""
     Category.where('categories."order" >= ?', self.order)

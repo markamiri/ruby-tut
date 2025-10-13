@@ -1,3 +1,146 @@
-<%# created the controller and view using file rails g controller home index %>
-<h1> Hello World!</h1>
-this is my first rails page...
+<div class="special-collection">
+  <div class="collection-cards">
+    <section class="cards">
+      <% @categories.each do |category| %>
+        <div class="three-d-wrapper">
+           <%= link_to category_page_path(category.slug) do %>
+            <div 
+              class="card animated"
+              style="background-image: url('<%= url_for(category.image) if category.image.attached? %>');"
+            >
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+
+    <style class="hover"></style>
+  </div>
+</div>
+
+<div class="feature-section">
+
+  
+
+  <!-- Left: Banner -->
+  <div class="feature-banner">
+    <div class="banner-text">
+      <p class="date">2025.09.04 14:00 (KST)</p>
+      <h1>2025 WORLDS Player Jersey</h1>
+      <p class="sub">OFFICIAL SALES OPEN</p>
+      <button class="check-btn">CHECK ➜</button>
+    </div>
+    <div class="banner-image">
+      <div class="placeholder">Image</div>
+    </div>
+  </div>
+
+  <!-- Right: Release List (TODO: SCROLL BAR HOVER NEEDS TO BE FIXED) -->
+  <div class="release-section">
+    <div class="release-header">
+      <h2>FEATURED</h2>
+    </div>
+
+    <% @featured_products.each do |product| %>
+    <%= link_to product_page_path(product.slug), class: "release-link" do %>
+      <div class="release-item">
+        <div class="release-thumb">
+          <% if product.ordered_images.any? %>
+            <%= image_tag product.ordered_images.first, class: "release-thumb-img" %>
+          <% else %>
+            <span class="placeholder">Img</span>
+          <% end %>
+        </div>
+
+        <div class="release-info">
+          <p class="release-category"><%= product.category.name if product.category %></p>
+          <p class="release-text"><%= product.name %></p>
+        </div>
+
+        <span class="release-arrow">➜</span>
+      </div>
+    <% end %>
+  <% end %>
+
+  </div>
+
+</div>
+
+
+
+<div class="popular-section">
+  <!-- Header -->
+  <div class="popular-header">
+    <h2 class="popular-title">Top Picks</h2>
+    <div class="popular-filters">
+      <button class="filter-btn active">ALL</button>
+      <button class="filter-btn">25 WORLDS</button>
+    </div>
+  </div>
+
+  <!-- Product carousel -->
+<div class="product-grid">
+  <% @best_products.each do |product| %>
+    <%= link_to product_page_path(product.slug), class: "card" do %>
+      <div class="card-image">
+        <% if product.ordered_images.any? %>
+          <%= image_tag product.ordered_images.first, class: "card-thumb" %>
+        <% else %>
+          <span>Image</span>
+        <% end %>
+      </div>
+
+      <div class="card-info">
+        <p class="card-name"><%= product.name %></p>
+        <p class="card-price">$<%= product.price %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+  <!-- Carousel arrows -->
+  <div class="carousel-controls">
+    <button class="carousel-btn prev">‹</button>
+    <button class="carousel-btn next">›</button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="best-section">
+  <h2 class="best-title">NEWLY LISTED</h2>
+
+  <div class="best-grid">
+    <% @latest_products.each_with_index do |product, i| %>
+      <%= link_to product_page_path(product.slug), class: "best-link" do %>
+        <div class="best-item">
+          <!-- Rank number -->
+          <div class="rank"><%= i + 1 %></div>
+
+          <!-- Image -->
+          <div class="best-image">
+            <% if product.ordered_images.any? %>
+              <%= image_tag product.ordered_images.first, class: "best-thumb-img" %>
+            <% else %>
+              <span>Img</span>
+            <% end %>
+          </div>
+
+          <!-- Info -->
+          <div class="best-info">
+            <p class="best-name"><%= product.name %></p>
+            <p class="best-price">$<%= product.price %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+

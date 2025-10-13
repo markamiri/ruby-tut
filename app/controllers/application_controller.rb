@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(_resource_or_scope)
     root_path
   end
+
+  before_action :set_categories
+
+  private
+
+  def set_categories
+    @categories = Category.select(:id, :name, :slug)
+  end
 end

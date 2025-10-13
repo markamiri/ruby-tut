@@ -2,5 +2,9 @@
   <td><%= category.name %></td>
   <td><%= category.slug %></td>
   <td><%= category.order %></td>
-  <td><%= link_to "Edit", category %></td>
+  <td><%= category.products_count %></td>
+
+  <td>
+    <%= link_to "Edit", category, class: "sb-btn sb-btn--sm" %>
+  </td>
 </tr>

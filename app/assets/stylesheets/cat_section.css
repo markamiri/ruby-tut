@@ -1,0 +1,126 @@
+:root {
+  --color1: rgb(0, 231, 255);
+  --color2: rgb(255, 0, 231);
+  --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
+  --charizard1: #fac;
+  --charizard2: #ddccaa;
+  --charizardfront: url(https://assets.codepen.io/13471/charizard-gx.webp);
+  --pika1: #54a29e;
+  --pika2: #a79d66;
+  --pikafront: url(https://assets.codepen.io/13471/pikachu-gx.webp);
+  --eevee1: #efb2fb;
+  --eevee2: #acc6f8;
+  --eeveefront: url(https://assets.codepen.io/13471/eevee-gx.webp);
+  --mewtwo1: #efb2fb;
+  --mewtwo2: #acc6f8;
+  --mewtwofront: url(https://assets.codepen.io/13471/mewtwo-gx.webp);
+}
+
+/* Container */
+.cards .three-d-wrapper {
+  perspective: 750px;
+  isolation: isolate;
+  transform: translate3d(0.1px, 0.1px, 0.1px);
+    width: 330px; /* or any size you want */
+
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  z-index: 1;
+  width: 750px;
+}
+@media screen and (min-width: 600px) {
+  .cards {
+    flex-direction: row;
+  }
+}
+
+/* Core card */
+.card {
+  width: clamp(200px, 18vw, 300px);
+  height: clamp(280px, 25vw, 420px);
+  position: relative;
+  margin: 20px;
+  border-radius: 5% / 3.5%;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+    background-position: center; /* centers it */
+
+  box-shadow: 
+    -5px -5px 5px -5px var(--color1), 
+    5px 5px 5px -5px var(--color2), 
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 
+    -20px -20px 30px -25px var(--color1), 
+    20px 20px 30px -25px var(--color2),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+/* Variants */
+.card.charizard {
+  --color1: var(--charizard1);
+  --color2: var(--charizard2);
+  --front: var(--charizardfront);
+}
+.card.pika {
+  --color1: var(--pika1);
+  --color2: var(--pika2);
+  --front: var(--pikafront);
+}
+.card.mewtwo {
+  --color1: var(--mewtwo1);
+  --color2: var(--mewtwo2);
+  --front: var(--mewtwofront);
+}
+.card.eevee {
+  --color1: #ec9bb6;
+  --color2: #ccac6f;
+  --color3: #69e4a5;
+  --color4: #8ec5d6;
+  --color5: #b98cce;
+  --front: var(--eeveefront);
+}
+
+/* Effects */
+.card:before,
+.card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;   /* softer */
+  pointer-events: none;
+}
+
+.card:before {
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    var(--color1) 25%,
+    transparent 47%,
+    transparent 53%,
+    var(--color2) 75%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  opacity: 0.2; /* toned down */
+}
+
+.card:after {
+  background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
+    url(https://assets.codepen.io/13471/holo.png), 
+    linear-gradient(125deg, #ff008420 15%, #fca40020 30%, #ffff0015 40%, #00ff8a10 60%, #00cfff20 70%, #cc4cfa25 85%);
+  background-size: 160%;
+  opacity: 0.3; /* toned down */
+}
+

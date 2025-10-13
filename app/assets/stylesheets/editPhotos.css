@@ -1,0 +1,85 @@
+.image-card {
+  position: relative;       /* so the delete button can be positioned */
+  flex-shrink: 0;           /* don’t shrink when flex overflows */
+  width: 300px;             /* fixed width */
+  height: 400px;            /* fixed height */
+  margin-right: 1rem;       /* spacing between images */
+}
+
+.image-card img {
+  width: 100%;              /* fill container */
+  height: 100%;             /* fill container */
+  object-fit: cover;        /* crop nicely */
+  border-radius: 6px;       /* optional rounded corners */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* optional shadow */
+  display: flex;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #dc2626; /* red */
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c; /* darker red */
+}
+
+.image-previews {
+  display: flex;
+  overflow-x: auto;         /* enable horizontal scroll */
+  overflow-y: hidden;       /* prevent vertical scrollbar */
+  padding: 0.5rem;
+  gap: 1rem;
+
+  width: 1340px;              /* force container to match viewport width */
+  max-width: 100%;          /* don't exceed screen */
+  box-sizing: border-box;
+
+  white-space: nowrap;      /* prevents flex children from wrapping */
+}
+
+.upload-box {
+  margin-top: 10px;
+  padding: 1.5rem;              /* p-6 */
+  border-radius: 0.5rem;        /* rounded-lg */
+  text-align: center;           /* text-center */
+  cursor: pointer;              /* cursor-pointer */
+  transition: background-color 0.2s;
+  border: 2px dotted #aaa;      /* 👈 dotted border */
+
+}
+
+.upload-box:hover {
+  background-color: #f9fafb;    /* hover:bg-gray-50 */
+}
+
+.upload-label {
+  display: block;
+  color: #374151;               /* text-gray-700 */
+  font-weight: 600;             /* font-semibold */
+  margin-bottom: 0.5rem;
+}
+
+.upload-button {
+  background-color: #2563eb;    /* bg-blue-600 */
+  color: white;
+  padding: 0.5rem 1rem;         /* px-4 py-2 */
+  border-radius: 0.375rem;      /* rounded */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* shadow */
+  transition: background-color 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #1e40af;    /* hover:bg-blue-700 */
+}

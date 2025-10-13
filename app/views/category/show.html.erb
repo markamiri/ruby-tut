@@ -1,0 +1,55 @@
+<div class="category-container">
+
+  <!-- Category title -->
+  <h1 class="category-title"><%= @category.name %></h1>
+
+  <!-- Products count + Sort row -->
+  <div class="row-between">
+    <!-- Left -->
+    <p class="product-count">
+      All products <span class="count"><%= @products.count %></span>
+    </p>
+
+    <!-- Right -->
+    <div class="dropdown sort-dropdown">
+    <a href="#">Sort ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="?sort=price-asc">Price: Low to High</a></li>
+      <li><a href="?sort=price-desc">Price: High to Low</a></li>
+      <li><a href="?sort=newest">Latest arrivals</a></li>
+    </ul>
+    </div>
+
+  </div>
+
+  <!-- Products Grid -->
+<% if @products.any? %>
+  <div class="product-grid">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <%= link_to product_page_path(product.slug), class: "product-link" do %>
+          <!-- Product image -->
+          <% if product.ordered_images.any? %>
+            <%= image_tag product.ordered_images.first, class: "product-image" %>
+          <% else %>
+            <div class="placeholder-image">
+              <span>Image</span>
+            </div>
+          <% end %>
+
+          <!-- Product info -->
+          <div class="product-info">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </div>
+        <% end %> <!-- closes link_to -->
+      </div> <!-- closes product-card -->
+    <% end %>
+  </div> <!-- closes product-grid -->
+<% else %>
+  <p class="no-products">No products in this category yet.</p>
+<% end %>
+
+
+
+</div>

@@ -1,0 +1,66 @@
+/* Grid layout */
+.top-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card container */
+.card_top {
+  display: flex;
+  flex-direction: column;
+  background: rgb(241,229,215);     /* light gray background */
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none !important;   /* kill the 1px border */
+
+}
+
+.card_top:hover {
+  transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(248, 245, 225, 2);
+}
+
+/* Image */
+.card-image {
+  width: 100%;
+  aspect-ratio: 1/1;        /* keep square ratio */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+    height: 311.5px;       /* make this taller */
+    width: 311.5px;       /* make this taller */
+    border-radius: 10px;
+
+  
+}
+
+.card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info section */
+.card-info {
+  padding: 1rem;
+}
+
+.card-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  margin: 0 0 0.25rem;
+}
+
+.card-price {
+  font-size: 0.95rem;
+  color: black;
+  margin: 0;
+}

@@ -1,0 +1,338 @@
+.product-page {
+  display: flex;
+  gap: 40px;
+  max-width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Left side (image) */
+.product-page-left {
+  flex: 0 0 auto;       /* don’t stretch infinitely */
+  max-width: 750px;     /* cap the image container */
+  width: 100%;          /* responsive */
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* center image & thumbnails */
+}
+
+.placeholder-image {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #777;
+  border: 1px solid #ddd;
+}
+
+/* Right side (details) */
+.product-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(241, 229, 215);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.detail-label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+.product-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Addon placeholder */
+.addon {
+  margin-bottom: 20px;
+}
+.addon-title {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* Quantity */
+.quantity {
+  margin: 20px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add-to-cart {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+.buy-now {
+  background: #d4af37;
+  color: #fff;
+}
+
+
+/* Container for label + select */
+.product-option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+/* Label (left side, bold) */
+.detail-label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #222;
+  margin-right: 15px;
+  flex: 0 0 80px; /* fixed width so it's aligned neatly */
+}
+
+/* Styled dropdown (right side) */
+.product-select {
+  flex: 1; /* take remaining space */
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  appearance: none; /* remove default arrow (browser) */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* Hover/focus effect */
+.product-select:hover,
+.product-select:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.product-header {
+  border-bottom: 1px solid black; /* thin gray line */
+  padding-bottom: 10px;          /* space above the line */
+  margin-bottom: 20px;           /* space below the line */
+}
+
+.addon {
+  padding-bottom: 20px;       /* spacing inside */
+  margin-bottom: 20px;        /* spacing outside */
+  border-bottom: 1px solid #000; /* black bottom border */
+}
+
+.product-page-image {
+  width: 100%;
+  max-width: 793px;   /* don’t grow bigger than 750px */
+  aspect-ratio: 1 / 1; /* always a square */
+  background: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3%;
+  overflow: hidden;   /* crop overflow when using object-fit: cover */
+}
+
+.product-page-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fill the square */
+  border-radius: 8px;
+}
+
+
+
+
+
+.accordion {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(153, 153, 153);
+  color: black;
+}
+
+.accordion-header:hover {
+  background: #f9f9f9;
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1rem;
+  color: #555;
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 300px; /* enough space for text */
+  padding: 1rem;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg); /* makes + into × */
+}
+
+.product-page-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  height: 750px;
+  margin: 0 auto 20px auto;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.main-product-image {
+  width: 100%;
+  max-width: 750px;   /* big desktop size */
+  height: auto;
+  object-fit: contain;
+}
+
+
+.thumbnail-gallery {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  overflow-x: auto;
+   padding: 12px;       /* adds breathing room top & bottom */
+  min-height: 100px;     /* slightly taller than thumbnails */
+
+  /* Hide scrollbar in most browsers */
+  scrollbar-width: none;  /* Firefox */
+  background-color: rgb(241, 229, 215);
+  border-radius: 5px;
+}
+.thumbnail-gallery::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari */
+}
+
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  width: 220px;   /* constrain card width */
+  height: 260px;  /* constrain card height */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  cursor: grab;
+}
+
+.photo-item .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* keeps aspect ratio and crops nicely */
+  display: block;
+}
+
+.photo-item .delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 4px 6px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.preview-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.preview-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}

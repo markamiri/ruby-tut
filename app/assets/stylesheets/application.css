@@ -9,11 +9,11 @@
  * Consider organizing styles into separate files for maintainability.
  */
 :root{
-  --bg:#0f0f10; --bg-2:#131315; --text:#eaeaea; --muted:#a7a7a7;
-  --accent:#2f6af2; --focus:#3a8cff55; --border:#242428;
+  --bg:rgb(95,150,170); --bg-2:#131315; --text:black; --muted:#a7a7a7;
+  --accent:#2f6af2; --focus:#3a8cff55; --border:transparent;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0; }
+html,body{margin:0;padding:0; background: var(--bg); color: var(--text); }
 a{text-decoration:none;color:inherit}
 
 .topbar{
@@ -42,7 +42,7 @@ a{text-decoration:none;color:inherit}
 .search{position:relative; width:min(560px,58vw)}
 .search input{
   width:100%; height:44px; border-radius:28px; border:1px solid var(--border);
-  background:#0d0d0f; color:var(--text); padding:0 44px 0 54px; font-size:15px; outline:none;
+  background:#f1e5d7; color:var(--text); padding:0 44px 0 54px; font-size:15px; outline:none;
 }
 .search input::placeholder{color:var(--muted)}
 .search .icon{position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px; opacity:.75}
@@ -139,7 +139,7 @@ a{text-decoration:none;color:inherit}
   height: 44px;
   border-radius: 28px;
   border: 1px solid var(--border);
-  background: #0d0d0f;
+  background: #f1e5d7;
   color: var(--text);
   padding: 0 44px 0 54px;
   font-size: 15px;
@@ -167,3 +167,6 @@ a{text-decoration:none;color:inherit}
   display: flex;
   min-height: 100vh;
 }
+
+
+@import "category";

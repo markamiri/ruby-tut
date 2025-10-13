@@ -1,4 +1,4 @@
-<%= form_with(model: category) do |form| %>
+<%= form_with(model: category, html: { multipart: true }) do |form| %>
   <% if category.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -16,6 +16,28 @@
     <%= form.text_field :name , class:"form-control" %>
   </div>
 
+<div class="field upload-box">
+  <p id="upload-instructions">Upload Photos</p>
+
+  <!-- Hidden file input -->
+  <%= form.file_field :image,
+        id: "product_image_input",
+        style: "display: none;",
+        accept: "image/*" %>
+
+  <!-- Custom button -->
+  <button type="button"
+          onclick="document.getElementById('product_image_input').click()"
+          class="sb-btn sb-btn--upload mt-3">
+    Choose Image
+  </button>
+
+  <!-- Preview container -->
+  <div id="single-image-preview" class="preview-container"></div>
+</div>
+
+
+
   <div class="form-group">
     <%= form.label :slug, style: "display: block" %>
     <%= form.text_field :slug, class:"form-control"%>
@@ -29,6 +51,6 @@
   <br/>
 
   <div>
-    <%= form.submit class:"btn btn-outline-success" %>
+    <%= form.submit class:"sb-btn sb-btn--success" %>
   </div>
 <% end %>

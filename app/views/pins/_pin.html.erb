@@ -1,0 +1,10 @@
+<div id="<%= dom_id pin %>">
+  <p>
+    <strong>Title:</strong>
+    <%= pin.title %>
+  </p>
+
+  <% pin.pictures.each do |picture| %>
+    <%= image_tag picture, size: "300x300" %>
+  <% end %>
+</div>
