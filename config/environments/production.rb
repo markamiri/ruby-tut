@@ -25,7 +25,6 @@ Rails.application.configure do
   config.active_storage.service = :amazon
 
 
-
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   config.assume_ssl = true
 
