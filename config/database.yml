@@ -31,5 +31,5 @@ production:
     timeout: 5000
 
     # 👇 Add this new section
-    cable:
-      <<: *primary
+  cable:
+    <<: *primary
