@@ -31,8 +31,11 @@ production:
     timeout: 5000
 
     # 👇 Add this new section
-  cable:
+  queue:
+    <<: *primary
+
+  cache:
     <<: *primary
   
-  queue:
+  cable:
     <<: *primary
