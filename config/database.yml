@@ -33,3 +33,6 @@ production:
     # 👇 Add this new section
   cable:
     <<: *primary
+  
+  queue:
+    <<: *primary
