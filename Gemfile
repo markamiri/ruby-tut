@@ -50,3 +50,5 @@ group :test do
 end
 
 gem "image_processing", "~> 1.14"
+
+gem "aws-sdk-s3", require: false
