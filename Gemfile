@@ -3,7 +3,16 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2", ">= 8.0.2.1"
 gem "propshaft"
-gem "sqlite3", ">= 2.1"
+# Use SQLite for development and test
+group :development, :test do
+  gem "sqlite3", ">= 2.1"
+end
+
+# Use PostgreSQL for production
+group :production do
+  gem "pg"
+end
+
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
