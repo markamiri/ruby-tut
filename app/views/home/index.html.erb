@@ -6,7 +6,7 @@
            <%= link_to category_page_path(category.slug) do %>
             <div 
               class="card animated"
-              style="background-image: url('<%= url_for(category.image) if category.image.attached? %>');"
+              style="background-image: url('<%= url_for(category.image.blob) if category.image.attached? %>');"
             >
             </div>
           <% end %>
