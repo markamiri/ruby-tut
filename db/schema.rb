@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_31_062238) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_31_063533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -103,6 +103,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_062238) do
     t.string "status", default: "queued"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "active_job_id"
+    t.integer "priority", default: 0, null: false
+    t.string "concurrency_key"
+    t.datetime "expires_at"
     t.index ["queue_name"], name: "index_solid_queue_jobs_on_queue_name"
     t.index ["status"], name: "index_solid_queue_jobs_on_status"
   end
