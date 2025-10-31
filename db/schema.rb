@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_23_223647) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_31_061324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -85,6 +85,35 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_23_223647) do
     t.index ["slug"], name: "idx_16425_index_products_on_slug", unique: true
   end
 
+  create_table "solid_queue_executions", force: :cascade do |t|
+    t.bigint "solid_queue_job_id", null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solid_queue_job_id"], name: "index_solid_queue_executions_on_solid_queue_job_id"
+  end
+
+  create_table "solid_queue_jobs", force: :cascade do |t|
+    t.string "queue_name", null: false
+    t.string "job_class", null: false
+    t.jsonb "arguments", default: {}
+    t.datetime "scheduled_at"
+    t.datetime "finished_at"
+    t.string "status", default: "queued"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["queue_name"], name: "index_solid_queue_jobs_on_queue_name"
+    t.index ["status"], name: "index_solid_queue_jobs_on_status"
+  end
+
+  create_table "solid_queue_queues", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "job_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.text "email", default: ""
     t.text "encrypted_password", default: ""
@@ -100,4 +129,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_23_223647) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id", name: "active_storage_attachments_blob_id_fkey"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id", name: "active_storage_variant_records_blob_id_fkey"
   add_foreign_key "products", "categories", name: "products_category_id_fkey"
+  add_foreign_key "solid_queue_executions", "solid_queue_jobs"
 end
