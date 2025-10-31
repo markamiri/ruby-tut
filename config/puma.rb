@@ -21,5 +21,5 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 # ✅ Recommended for multi-core performance (safe default)
-workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-preload_app!
+workers 0
+#preload_app!
