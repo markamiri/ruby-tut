@@ -63,10 +63,12 @@
     <%= form.text_field :name , class:"form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug , class:"form-control"%>
-  </div>
+  <!--
+<div class="form-group">
+  <%= form.label :slug, style: "display: block" %>
+  <%= form.text_field :slug , class:"form-control"%>
+</div>
+-->
 
   <div class="form-group">
     <%= form.label :price, style: "display: block" %>
@@ -109,9 +111,14 @@
 </div>
 
 <% end %>
+
+<% if @product.persisted? %>
+
 <div>
   <%= link_to "Delete Product",
       product_path(@product),
       data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this product?" },
       class: "sb-btn sb-btn--failure mt-3" %>
 </div>
+
+<% end %>

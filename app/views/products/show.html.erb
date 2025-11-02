@@ -3,10 +3,16 @@
 <%= render @product %>
 
 <div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
 
-  <%= button_to "Destroy this product", @product, method: :delete %>
+  <div style="display: flex; gap: 10px; margin-top:20px">
+    <%= link_to "Edit product", edit_category_path(@product), class: "sb-btn sb-btn--success" %>
+    <%= button_to "Destroy product", @product,
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "sb-btn sb-btn--danger" %>
+  </div>
 
-
+  <div style="margin-top:20px">
+    <%= link_to "Back to products", products_path, class: "sb-btn sb-btn--info" %>
+  </div>
 </div>

@@ -13,6 +13,8 @@ class Category < ApplicationRecord
     default_scope { order(order: :asc)}
     
     before_validation :normalize_name
+    before_validation :generate_slug, on: [:create, :update]
+    validates :slug, presence: true, uniqueness: true
 
     validates :name, presence: true,
                     uniqueness: { case_sensitive: false }
@@ -28,7 +30,6 @@ class Category < ApplicationRecord
     def assign_default_order
       self.order ||= (Category.maximum(:order)||0)+1
 
-
     end 
 
     def normalize_name
@@ -36,8 +37,19 @@ class Category < ApplicationRecord
     end
 
 
-    def set_slug
-      self.slug = name.parameterize if slug.blank?
+    def generate_slug
+      return if name.blank?
+      base_slug = (slug.presence || name).to_s.parameterize
+      new_slug = base_slug
+      counter = 2
+
+      # ensure uniqueness
+      while self.class.exists?(slug: new_slug)
+        new_slug = "#{base_slug}-#{counter}"
+        counter += 1
+      end
+
+      self.slug = new_slug
     end
     
    def shift_on_insert
