@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_31_223724) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_08_195445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -63,6 +63,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_223724) do
     t.index ["slug"], name: "idx_16409_index_categories_on_slug"
   end
 
+  create_table "logos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pins", force: :cascade do |t|
     t.text "title"
     t.timestamptz "created_at"
@@ -83,6 +88,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_31_223724) do
     t.bigint "status", default: 0
     t.index ["category_id"], name: "idx_16425_index_products_on_category_id"
     t.index ["slug"], name: "idx_16425_index_products_on_slug", unique: true
+  end
+
+  create_table "slide_shows", force: :cascade do |t|
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "solid_queue_executions", force: :cascade do |t|
