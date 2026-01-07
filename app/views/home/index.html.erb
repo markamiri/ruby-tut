@@ -1,7 +1,7 @@
 <div class="special-collection">
   <div class="collection-cards">
     <section class="cards">
-      <% @categories.each do |category| %>
+      <% @categories.first(5).each do |category| %>
         <div class="three-d-wrapper">
            <%= link_to category_page_path(category.slug) do %>
             <div 
