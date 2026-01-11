@@ -12,3 +12,6 @@ import "jquery"
 window.$ = window.jQuery = jQuery
 import "holo_cards"
 
+
+import "slideshow_controller"
+import "feature_banner"

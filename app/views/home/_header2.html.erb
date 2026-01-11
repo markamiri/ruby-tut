@@ -1,6 +1,16 @@
 <div class="navbar2">
   <div class="navbar2-section left">
-      <%= link_to "Logo here", root_path, class: "logo-link" %>
+    <%= link_to root_path, class: "logo-link" do %>
+  <% if @current_logo&.image&.attached? %>
+    <%= image_tag @current_logo.image,
+                  alt: "Site Logo",
+                  class: "navbar-logo",
+                  width: 120,
+                  height: 120 %>
+  <% else %>
+    Logo here
+  <% end %>
+<% end %>
 
   </div>
 

@@ -1,3 +1,5 @@
 class Logo < ApplicationRecord
-    has_one_attached:image
+  has_one_attached :image
+
+  validates :image, presence: true
 end

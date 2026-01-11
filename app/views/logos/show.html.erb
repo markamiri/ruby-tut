@@ -1,0 +1,12 @@
+<h1>Current Logo</h1>
+
+<% if @logo.image.attached? %>
+  <%= image_tag @logo.image, style: "max-width: 200px;" %>
+<% else %>
+  <p>No logo uploaded yet.</p>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_logo_path(@logo), class: "sb-btn sb-btn--edit" %>
+  <%= link_to "Delete", @logo, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "sb-btn sb-btn--failure" %>
+</p>

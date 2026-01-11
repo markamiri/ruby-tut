@@ -23,17 +23,20 @@
   
 
   <!-- Left: Banner -->
-  <div class="feature-banner">
-    <div class="banner-text">
-      <p class="date">2025.09.04 14:00 (KST)</p>
-      <h1>2025 WORLDS Player Jersey</h1>
-      <p class="sub">OFFICIAL SALES OPEN</p>
-      <button class="check-btn">CHECK ➜</button>
+  <% slide_show = SlideShow.first %>
+
+  <% if slide_show&.images&.attached? %>
+    <div class="feature-banner"
+        data-images="<%= slide_show.images.map { |img| url_for(img) }.to_json %>">
+
+      <div class="banner-image">
+        <%= image_tag slide_show.images.first,
+              id: "feature-banner-img",
+              class: "banner-img" %>
+      </div>
+
     </div>
-    <div class="banner-image">
-      <div class="placeholder">Image</div>
-    </div>
-  </div>
+  <% end %>
 
   <!-- Right: Release List (TODO: SCROLL BAR HOVER NEEDS TO BE FIXED) -->
   <div class="release-section">

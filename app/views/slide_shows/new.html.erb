@@ -1,0 +1,86 @@
+<div class="content content--white">
+  <div class="content-inner">
+    <% slide_show = SlideShow.first %>
+
+    <div class="page-shell slideshow-panel">
+      <h3 class="slideshow-title">Current Slides</h3>
+
+      <% if slide_show&.images&.attached? %>
+        <!-- ========================= -->
+        <!-- NORMAL STATE (HAS IMAGES) -->
+        <!-- ========================= -->
+        <div class="slideshow-gallery">
+          <div class="slideshow-preview">
+            <!-- Big preview -->
+            <div class="slideshow-main">
+              <%= image_tag slide_show.images.first,
+                    id: "main-slide-image",
+                    class: "slideshow-main-image" %>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="slideshow-thumbs" id="slideshow-thumbs">
+              <% slide_show.images.each do |image| %>
+                <div class="thumb-wrapper slide-item" data-id="<%= image.id %>">
+                  <%= image_tag image,
+                        class: "slideshow-thumb",
+                        data: { full: url_for(image) } %>
+
+                  <%= link_to "✖",
+                        remove_image_slide_show_path(slide_show, image_id: image.id),
+                        data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                        },
+                        class: "delete-btn" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <!-- ========================= -->
+        <!-- EMPTY STATE -->
+        <!-- ========================= -->
+        <div class="slideshow-empty">
+          <p class="empty-subtitle">
+            Upload images to start building your slideshow.
+          </p>
+        </div>
+      <% end %>
+
+      <!-- ========================= -->
+      <!-- ACTIONS (ALWAYS VISIBLE) -->
+      <!-- ========================= -->
+      <div class="slideshow-actions">
+        <%= form_with model: slide_show || SlideShow.new,
+              url: slide_shows_path,
+              method: :post,
+              html: { multipart: true },
+              class: "upload-form" do |f| %>
+
+          <label class="sb-btn sb-btn--secondary upload-btn">
+            Upload Image
+            <%= f.file_field :images,
+                  multiple: true,
+                  accept: "image/*",
+                  class: "upload-input",
+                  onchange: "this.form.submit()" %>
+          </label>
+
+        <% end %>
+
+        <% if slide_show&.images&.attached? %>
+          <%= button_to "Save New Order",
+                reorder_slide_shows_path,
+                method: :post,
+                class: "sb-btn sb-btn--primary",
+                id: "save-order-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+</div>
+

@@ -1,9 +1,0 @@
-<h1>Current Logo</h1>
-
-<% if @logo&.image&.attached? %>
-  <%= image_tag @logo.image, style: "max-width: 300px;" %>
-<% else %>
-  <p>No logo uploaded yet.</p>
-<% end %>
-
-<%= link_to "Upload New Logo", logo_new_path, class: "sb-btn sb-btn--success mt-3" %>

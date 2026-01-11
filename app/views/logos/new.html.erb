@@ -1,0 +1,16 @@
+<h1>Upload a New Logo</h1>
+
+<%= form_with(model: @logo, local: true, multipart: true) do |form| %>
+  <% if @logo.errors.any? %>
+    <ul>
+      <% @logo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form.label :image, "Choose a logo file" %><br>
+  <%= form.file_field :image %><br><br>
+
+  <%= form.submit "Save Logo", class: "sb-btn sb-btn--success" %>
+<% end %>

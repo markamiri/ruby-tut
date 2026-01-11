@@ -10,7 +10,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
+  
     width: 1210px;
   aspect-ratio: 1210 / 518.56;
 }
@@ -328,3 +328,79 @@
   align-items: center;
 }
 
+/*slide show css*/
+
+/* Slideshow gallery */
+.slideshow-gallery {
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+/* Main image */
+.slideshow-main {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-main-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Thumbnails row */
+.slideshow-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.slideshow-thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.slideshow-thumbs::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* Thumbnail item */
+.thumb-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.slideshow-thumb {
+  width: 110px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.slideshow-thumb:hover {
+  transform: scale(1.05);
+  border-color: #2f6af2;
+}
+
+/* Delete button */
+.thumb-wrapper .delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 2px 6px;
+}

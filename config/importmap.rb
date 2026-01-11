@@ -13,3 +13,5 @@ pin "image_preview"
 
 pin "holo_cards"
 pin "jquery", to: "https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.js"
+pin "slideshow_controller"
+pin "feature_banner"

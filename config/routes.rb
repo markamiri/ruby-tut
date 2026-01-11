@@ -35,9 +35,17 @@ end
 
 
   #logo 
-  resource :logo, only: [:create]
-  get "/logo/new", to: "logo#new"
-  get "/logo", to: "logo#show"
+  resources :logos
+
+  resources :slide_shows, only: [:new, :create, :destroy] do
+  member do
+    delete :remove_image
+  end
+
+  collection do
+    post :reorder
+  end
+end
 
  
 end

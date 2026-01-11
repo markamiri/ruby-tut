@@ -15,14 +15,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= 'admin-scope' if request.path.start_with?('/products', '/categories', '/admin') %>">
+  <body class="<%= 'admin-scope' if request.path.start_with?('/products', '/categories', '/admin', '/slide_shows') %>">
 
     <%# Makes partials for the header %>
     <%= render 'home/header2' %>
 
     <div class="layout">
       <!-- Sidebar -->
-      <% if controller_name.in?(%w[admin categories products]) %>
+      <% if controller_name.in?(%w[admin categories products slide_shows]) %>
         <%= render "admin/sidebar" %>
       <% end %>
 

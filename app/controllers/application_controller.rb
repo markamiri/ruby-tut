@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
   def set_categories
     @categories = Category.select(:id, :name, :slug)
   end
+
+  before_action :set_current_logo
+
+  private
+
+  def set_current_logo
+    @current_logo = Logo.order(created_at: :desc).first
+  end
 end
