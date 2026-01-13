@@ -1,46 +1,30 @@
 class LogosController < ApplicationController
-  before_action :set_logo, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @logos = Logo.all
-  end
-
-  def show
-  end
-
   def new
-    @logo = Logo.new
+    @logo = Logo.first_or_create!
   end
 
   def create
-    @logo = Logo.new(logo_params)
-    if @logo.save
-      redirect_to new_logo_path, notice: "Logo uploaded successfully!"
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def edit
+    @logo = Logo.create!
+    attach_image(@logo)
+    redirect_to new_logo_path, notice: "Logo uploaded!"
   end
 
   def update
-    if @logo.update(logo_params)
-      redirect_to @logo, notice: "Logo updated!"
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @logo = Logo.first
+    attach_image(@logo)
+    redirect_to new_logo_path, notice: "Logo updated!"
   end
 
   def destroy
-    @logo.destroy
-    redirect_to logos_path, notice: "Logo deleted!"
+    Logo.first&.destroy
+    redirect_to new_logo_path, notice: "Logo deleted!"
   end
 
   private
 
-  def set_logo
-    @logo = Logo.find(params[:id])
+  def attach_image(logo)
+    logo.image.purge if logo.image.attached?
+    logo.image.attach(logo_params[:image])
   end
 
   def logo_params

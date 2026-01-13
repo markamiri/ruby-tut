@@ -35,7 +35,7 @@ end
 
 
   #logo 
-  resources :logos
+  resource :logo
 
   resources :slide_shows, only: [:new, :create, :destroy] do
   member do

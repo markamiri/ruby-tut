@@ -7,6 +7,6 @@
 <% end %>
 
 <p>
-  <%= link_to "Edit", edit_logo_path(@logo), class: "sb-btn sb-btn--edit" %>
-  <%= link_to "Delete", @logo, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "sb-btn sb-btn--failure" %>
+  <%= link_to "Edit", edit_logo_path, class: "sb-btn sb-btn--edit" %>
+  <%= link_to "Delete", logo_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "sb-btn sb-btn--failure" %>
 </p>

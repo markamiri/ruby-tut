@@ -8,21 +8,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <title>Friends App</title>
+    <title>Rose Collectibles</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= 'admin-scope' if request.path.start_with?('/products', '/categories', '/admin', '/slide_shows') %>">
+  <body class="<%= 'admin-scope' if request.path.start_with?('/products', '/categories', '/admin', '/slide_shows' ,'/logo') %>">
 
     <%# Makes partials for the header %>
     <%= render 'home/header2' %>
 
     <div class="layout">
       <!-- Sidebar -->
-      <% if controller_name.in?(%w[admin categories products slide_shows]) %>
+      <% if controller_name.in?(%w[admin categories products slide_shows logos]) %>
         <%= render "admin/sidebar" %>
       <% end %>
 

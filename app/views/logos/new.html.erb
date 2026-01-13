@@ -1,16 +1,26 @@
-<h1>Upload a New Logo</h1>
+<h1>Upload / Replace Logo</h1>
 
-<%= form_with(model: @logo, local: true, multipart: true) do |form| %>
-  <% if @logo.errors.any? %>
-    <ul>
-      <% @logo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<h2>Current Logo</h2>
 
-  <%= form.label :image, "Choose a logo file" %><br>
-  <%= form.file_field :image %><br><br>
+<% if @logo.image.attached? %>
+  <%= image_tag @logo.image, style: "max-width: 200px;" %>
+<% else %>
+  <p>No logo uploaded yet.</p>
+<% end %>
+
+
+<%= form_with model: @logo, url: logo_path, local: true, multipart: true do |form| %>
+
+  <div class="file-upload-row">
+    <%= form.file_field :image,
+          class: "file-input sb-btn sb-btn--upload mt-3",
+          accept: "image/*" %>
+  </div>
+
+  <br>
 
   <%= form.submit "Save Logo", class: "sb-btn sb-btn--success" %>
+
 <% end %>
+<hr>
+
