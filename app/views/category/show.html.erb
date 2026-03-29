@@ -26,7 +26,9 @@
 <% if @products.any? %>
   <div class="product-grid">
     <% @products.each do |product| %>
-      <div class="product-card">
+      <div class="product-card card animated">
+        <div class="card__shine"></div>
+        <div class="card__glare"></div>
         <%= link_to product_page_path(product.slug), class: "product-link" do %>
           <!-- Product image -->
           <% if product.ordered_images.any? %>

@@ -5,11 +5,26 @@
   color: #fff;
   padding: 0px 20px 0 20px; /* top, right, bottom, left */
   font-family: sans-serif;
+  position: relative;
 
   /* scrolling */
   max-height: 590px;   /* adjust as you like */
   overflow-y: auto;    /* vertical scroll if content is taller */
   border-radius: 12px; /* optional rounded corners */
+}
+
+.release-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 22px solid rgb(95, 150, 170);
+  z-index: 2;
 }
 
 

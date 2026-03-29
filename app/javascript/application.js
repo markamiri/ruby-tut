@@ -15,3 +15,4 @@ import "holo_cards"
 
 import "slideshow_controller"
 import "feature_banner"
+import "scroll_animations"

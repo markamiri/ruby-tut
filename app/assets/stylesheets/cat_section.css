@@ -57,7 +57,36 @@
     -5px -5px 5px -5px var(--color1), 
     5px 5px 5px -5px var(--color2), 
     0 55px 35px -20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.5s ease, box-shadow 0.2s ease;
+  transform: perspective(600px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.card__shine,
+.card__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--card-opacity, 0);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.card__shine {
+  background: conic-gradient(
+    from 0deg at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    #ff0080, #ff8c00, #ffff00, #40e0d0, #7b2fff, #ff0080
+  );
+  mix-blend-mode: color-dodge;
+}
+
+.card__glare {
+  background: radial-gradient(
+    circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(255, 255, 255, 0.35) 0%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
 }
 
 .card:hover {
@@ -98,29 +127,28 @@
   content: "";
   position: absolute;
   inset: 0;
-  mix-blend-mode: screen;   /* softer */
   pointer-events: none;
+  opacity: 0;
 }
 
-.card:before {
-  background-image: linear-gradient(
-    115deg,
-    transparent 0%,
-    var(--color1) 25%,
-    transparent 47%,
-    transparent 53%,
-    var(--color2) 75%,
-    transparent 100%
+.card__shine {
+  display: none;
+}
+
+.card__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  opacity: calc(var(--card-opacity, 0) * 0.7);
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    farthest-corner circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(255, 255, 255, 0.85) 10%,
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(0, 0, 0, 0.4) 100%
   );
-  background-size: 300% 300%;
-  opacity: 0.2; /* toned down */
-}
-
-.card:after {
-  background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
-    url(https://assets.codepen.io/13471/holo.png), 
-    linear-gradient(125deg, #ff008420 15%, #fca40020 30%, #ffff0015 40%, #00ff8a10 60%, #00cfff20 70%, #cc4cfa25 85%);
-  background-size: 160%;
-  opacity: 0.3; /* toned down */
+  mix-blend-mode: overlay;
 }
 

@@ -11,14 +11,18 @@
   <div class="product-page-left">
 
   <!-- Main product image -->
-  <div class="product-page-image">
-    <% if @product.ordered_images.any?%>
-      <%= image_tag @product.ordered_images.first, 
-            class: "main-product-image", 
-            id: "main-product-image" %>
-    <% else %>
-      <span>No image available</span>
-    <% end %>
+  <div class="three-d-wrapper">
+    <div class="product-page-image card animated">
+      <% if @product.ordered_images.any?%>
+        <%= image_tag @product.ordered_images.first,
+              class: "main-product-image",
+              id: "main-product-image" %>
+      <% else %>
+        <span>No image available</span>
+      <% end %>
+      <div class="card__shine"></div>
+      <div class="card__glare"></div>
+    </div>
   </div>
 
   <!-- Thumbnails -->
@@ -37,32 +41,52 @@
 
   <!-- Right side: Details -->
   <div class="product-details">
+
+    <!-- Heading area -->
     <div class="product-header">
-        <h1 class="product-title"><%= @product.name %></h1>
-        <p class="product-price">$<%= @product.price %></p>
+      <h1 class="product-title"><%= @product.name %></h1>
+      <div class="product-meta">
+        <span class="product-category"><%= @product.category&.name %></span>
+        <a href="#" class="wish-list-btn">♡ Wish List</a>
+      </div>
+      <div class="price-box">
+        <span class="product-price" id="unit-price" data-price="<%= @product.price %>">$<%= @product.price %></span>
+      </div>
     </div>
 
-
-    <div class="product-option-row">
-    <label for="size" class="detail-label">Quantity</label>
-    <select id="size" class="product-select">
-        <option value="">- [Required] Please select options -</option>
-    </select>
+    <!-- Product list table -->
+    <div class="total-products">
+      <table class="product-qty-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @product.name %></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn qty-down">−</button>
+                <input type="text" id="quantity" class="qty-input" value="1" readonly>
+                <button class="qty-btn qty-up">+</button>
+              </div>
+            </td>
+            <td class="qty-price" id="qty-price">$<%= @product.price %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-
-    <!-- Placeholder add-on -->
-    <div class="addon">
-      <p>Placeholder</p>
-      <p class="addon-title">Shipping options</p>
-      <select class="product-select">
-        <option value="">- [Required] Please select options -</option>
-      </select>
-    </div>
-
-    <!-- Quantity / Total -->
-    <div class="quantity">
-      <p><strong>Price(Quantity):</strong> $<%= @product.price %> (0 item)</p>
+    <!-- Total price -->
+    <div class="total-price-bar">
+      <span class="total-price-label">Price (Quantity):</span>
+      <span class="total-price-value">
+        <strong id="total-price">$<%= @product.price %></strong>
+        <span id="item-count">(1 item)</span>
+      </span>
     </div>
 
     <!-- Action buttons -->
@@ -131,19 +155,41 @@
 
 <script>
   document.addEventListener("turbo:load", () => {
+    // Accordion
     document.querySelectorAll(".accordion-header").forEach(header => {
       header.addEventListener("click", () => {
         const item = header.parentElement;
         item.classList.toggle("open");
-
-        // Optional: toggle icon +/−
         const icon = header.querySelector(".accordion-icon");
-        if (item.classList.contains("open")) {
-          icon.textContent = "−";
-        } else {
-          icon.textContent = "+";
-        }
+        icon.textContent = item.classList.contains("open") ? "−" : "+";
       });
+    });
+
+    // Quantity +/-
+    const unitPrice = parseFloat(document.getElementById("unit-price")?.dataset.price || 0);
+    const qtyInput = document.getElementById("quantity");
+    const totalPriceEl = document.getElementById("total-price");
+    const itemCountEl = document.getElementById("item-count");
+    const qtyPriceEl = document.getElementById("qty-price");
+
+    function updateTotal() {
+      const qty = parseInt(qtyInput.value);
+      const total = (unitPrice * qty).toFixed(2);
+      totalPriceEl.textContent = `$${total}`;
+      qtyPriceEl.textContent = `$${total}`;
+      itemCountEl.textContent = `(${qty} item${qty !== 1 ? "s" : ""})`;
+    }
+
+    document.querySelector(".qty-up")?.addEventListener("click", () => {
+      qtyInput.value = parseInt(qtyInput.value) + 1;
+      updateTotal();
+    });
+
+    document.querySelector(".qty-down")?.addEventListener("click", () => {
+      if (parseInt(qtyInput.value) > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+        updateTotal();
+      }
     });
   });
 </script>

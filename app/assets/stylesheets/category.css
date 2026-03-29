@@ -54,13 +54,12 @@
 .product-card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
   transition: box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-    height: auto; /* don’t force full height */
-    
-
+  height: auto;
+  position: relative;
 }
 
 .product-card:hover {
@@ -88,7 +87,7 @@
   flex-direction: column;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
   background: #fff;
 }
 

@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+How to run it locally
+cd friends && source .env && bin/dev -p 5000

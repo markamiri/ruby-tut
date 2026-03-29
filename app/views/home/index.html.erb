@@ -1,22 +1,4 @@
-<div class="special-collection">
-  <div class="collection-cards">
-    <section class="cards">
-      <% @categories.first(5).each do |category| %>
-        <div class="three-d-wrapper">
-           <%= link_to category_page_path(category.slug) do %>
-            <div 
-              class="card animated"
-              style="background-image: url('<%= url_for(category.image) if category.image.attached? %>');"
-            >
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </section>
 
-    <style class="hover"></style>
-  </div>
-</div>
 
 <div class="feature-section">
 
@@ -69,7 +51,27 @@
 
 </div>
 
+<div class="special-collection">
+  <div class="collection-cards">
+    <section class="cards">
+      <% @categories.first(5).each do |category| %>
+        <div class="three-d-wrapper">
+           <%= link_to category_page_path(category.slug) do %>
+            <div
+              class="card animated"
+              style="background-image: url('<%= url_for(category.image) if category.image.attached? %>');"
+            >
+              <div class="card__shine"></div>
+              <div class="card__glare"></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
 
+    <style class="hover"></style>
+  </div>
+</div>
 
 <div class="popular-section">
   <!-- Header -->
@@ -85,6 +87,8 @@
 <div class="product-grid">
   <% @best_products.each do |product| %>
     <%= link_to product_page_path(product.slug), class: "card" do %>
+      <div class="card__shine"></div>
+      <div class="card__glare"></div>
       <div class="card-image">
         <% if product.ordered_images.any? %>
           <%= image_tag product.ordered_images.first, class: "card-thumb" %>

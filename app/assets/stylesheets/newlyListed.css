@@ -3,6 +3,21 @@
   background-color: #f1e5d7;
   padding: 20px;
   border-radius: 8px;
+  position: relative;
+}
+
+.best-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 22px solid rgb(95, 150, 170);
+  z-index: 2;
 }
 
 .best-title {
